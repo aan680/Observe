@@ -31,7 +31,7 @@ Future work: Make the methods more generic. All properties are currently pre-def
 
 Define contexts:
 
-Access: hhttp://semanticweb.cs.vu.nl/observe/swish/p/Define_context.pl
+Access: http://semanticweb.cs.vu.nl/observe/swish/p/Define_context.pl
 Input: details about the context, i.e. a time (in sxd:dateTime notation) and location (in lat and long) corresponding to the screen position. 
 Output: RDF triples defining the context (with a URI as ) and the properties refTime and refArea
 Dependencies, prerequisites: none.
