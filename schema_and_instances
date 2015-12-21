@@ -1,0 +1,164 @@
+@base                   <user> .
+@prefix           skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix            geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix            owl: <http://www.w3.org/2002/07/owl#> .
+@prefix            xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix           rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix            rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix          ob-code: <http://semanticweb.cs.vu.nl/observe/code/> .
+@prefix            ob: <http://semanticweb.cs.vu.nl/observe/> .
+@prefix   sdmx-measure: <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix             qb: <http://purl.org/linked-data/cube#> .
+
+# Named toplevel resources (23)
+
+ob:ContextAttribute
+	a rdfs:Class .
+
+ob:ContextAttributeValePair
+	a rdfs:Class .
+
+ob-code:crowded-high
+	a ob-code:ContextAttributeValuePair ,
+	  skos:Concept ;
+	ob:lowerBoundIncl "0.2"^^xsd:string ;
+	ob:upperBoundIncl "1"^^xsd:string ;
+	rdfs:seeAlso ob:crowdedness ;
+	skos:inScheme ob-code:crowdedness ;
+	skos:notation "crowded-high"^^xsd:string ;
+	skos:prefLabel "high crowdedness"^^xsd:string ;
+	skos:topConceptOf ob-code:crowdedness .
+
+ob-code:crowded-low
+	a ob-code:ContextAttributeValuePair ,
+	  skos:Concept ;
+	ob:lowerBoundIncl "0"^^xsd:string ;
+	ob:upperBoundIncl "0.19"^^xsd:string ;
+	rdfs:seeAlso ob:crowdedness ;
+	skos:inScheme ob-code:crowdedness ;
+	skos:notation "crowded-low"^^xsd:string ;
+	skos:prefLabel "low crowdedness"^^xsd:string ;
+	skos:topConceptOf ob-code:crowdedness .
+
+ob-code:crowdedness
+	a qb:CodedProperty ,
+	  rdf:Property .
+
+ob-code:museums-nearby
+	a qb:CodedProperty ,
+	  rdf:Property .
+
+ob-code:museums-nearby-false
+	a ob-code:ContextAttributeValuePair ;
+	rdfs:seeAlso ob:museums-nearby ;
+	skos:inScheme ob-code:museums-nearby ;
+	skos:notation "museums-nearby-false"^^xsd:string ;
+	skos:prefLabel "absence of nearby museums"^^xsd:string ;
+	skos:topConceptOf ob-code:museums-nearby .
+
+ob-code:museums-nearby-true
+	a ob-code:ContextAttributeValuePair ;
+	rdfs:seeAlso ob:museums-nearby ;
+	skos:inScheme ob-code:museums-nearby ;
+	skos:notation "museums-nearby-true"^^xsd:string ;
+	skos:prefLabel "presence of nearby museums"^^xsd:string ;
+	skos:topConceptOf ob-code:museums-nearby .
+
+ob-code:sunshine
+	a qb:CodedProperty ,
+	  rdf:Property .
+
+ob-code:sunshine-high
+	a ob-code:ContextAttributeValuePair ,
+	  skos:Concept ;
+	ob:lowerBoundIncl "0.3"^^xsd:string ;
+	ob:upperBoundIncl "1"^^xsd:string ;
+	rdfs:seeAlso ob:sunshine ;
+	skos:inScheme ob-code:sunshine ;
+	skos:notation "sunshine-high"^^xsd:string ;
+	skos:prefLabel "high sunshine"^^xsd:string ;
+	skos:topConceptOf ob-code:sunshine .
+
+ob-code:sunshine-low
+	a ob-code:ContextAttributeValuePair ,
+	  skos:Concept ;
+	ob:lowerBoundIncl "0"^^xsd:string ;
+	ob:upperBoundIncl "0.29"^^xsd:string ;
+	rdfs:seeAlso ob:sunshine ;
+	skos:inScheme ob-code:sunshine ;
+	skos:notation "sunshine-low"^^xsd:string ;
+	skos:prefLabel "low sunshine"^^xsd:string ;
+	skos:topConceptOf ob-code:sunshine .
+
+ob-code:temperature
+	a qb:CodedProperty ,
+	  rdf:Property .
+
+ob-code:temperature-high
+	a ob-code:ContextAttributeValuePair ,
+	  skos:Concept ;
+	ob:lowerBoundIncl "20"^^xsd:string ;
+	ob:upperBoundIncl "100"^^xsd:string ;
+	rdfs:seeAlso ob:temperature ;
+	skos:inScheme ob-code:temperature ;
+	skos:notation "temperature-high"^^xsd:string ;
+	skos:prefLabel "high temperature"^^xsd:string ;
+	skos:topConceptOf ob-code:temperature .
+
+ob-code:temperature-low
+	a ob-code:ContextAttributeValuePair ,
+	  skos:Concept ;
+	ob:lowerBoundIncl "-100"^^xsd:string ;
+	ob:upperBoundIncl "20"^^xsd:string ;
+	rdfs:seeAlso ob:temperature ;
+	skos:inScheme ob-code:temperature ;
+	skos:notation "temperature-low"^^xsd:string ;
+	skos:prefLabel "low temperature"^^xsd:string ;
+	skos:topConceptOf ob-code:temperature .
+
+ob:crowdedness
+	a qb:MeasureProperty ,
+	  ob:ContextAttribute ,
+	  rdf:Property ;
+	rdfs:range xsd:decimal ;
+	rdfs:subPropertyOf sdmx-measure:obsValue .
+
+ob:museums-nearby
+	a qb:MeasureProperty ,
+	  ob:ContextAttribute ,
+	  rdf:Property ;
+	rdfs:range xsd:integer ;
+	rdfs:subPropertyOf sdmx-measure:obsValue .
+
+ob:refArea
+	a qb:DimensionProperty ,
+	  rdf:Property ;
+	rdfs:range geo:SpatialThing .
+
+ob:refTime
+	a qb:DimensionProperty ,
+	  rdf:Property .
+
+ob:source
+	a rdf:Property .
+
+ob:suitable-for
+	a rdf:Property .
+
+ob:sunshine
+	a qb:MeasureProperty ,
+	  ob:ContextAttribute ,
+	  rdf:Property ;
+	rdfs:range xsd:decimal ;
+	rdfs:subPropertyOf sdmx-measure:obsValue .
+
+ob:temperature
+	a qb:MeasureProperty ,
+	  ob:ContextAttribute ,
+	  rdf:Property ;
+	rdfs:range xsd:decimal ;
+	rdfs:subPropertyOf sdmx-measure:obsValue .
+
+ob:refArea
+	owl:sameAs sdmx-dimension:refArea .
